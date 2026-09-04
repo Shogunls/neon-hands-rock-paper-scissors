@@ -1,0 +1,55 @@
+name: Android AAB
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install Android build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git zip unzip openjdk-17-jdk autoconf automake libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev cmake libffi-dev libssl-dev
+          python -m pip install "git+https://github.com/kivy/buildozer.git@a153097b3c534bea8a17da2abf1369d67c8cbfcb"
+      - name: Verify source before build
+        run: python tools/security_check.py
+      - name: Prepare upload key
+        env:
+          UPLOAD_KEYSTORE_BASE64: ${{ secrets.P4A_RELEASE_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.P4A_RELEASE_KEYSTORE_PASSWD }}
+          KEY_ALIAS: ${{ secrets.P4A_RELEASE_KEYALIAS }}
+          KEY_PASSWORD: ${{ secrets.P4A_RELEASE_KEYALIAS_PASSWD }}
+        run: |
+          test -n "$UPLOAD_KEYSTORE_BASE64"
+          test -n "$STORE_PASSWORD"
+          test -n "$KEY_ALIAS"
+          test -n "$KEY_PASSWORD"
+          umask 077
+          printf '%s' "$UPLOAD_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/neon-hands-upload.jks"
+      - name: Build release bundle
+        env:
+          P4A_RELEASE_KEYSTORE: ${{ runner.temp }}/neon-hands-upload.jks
+          P4A_RELEASE_KEYSTORE_PASSWD: ${{ secrets.P4A_RELEASE_KEYSTORE_PASSWD }}
+          P4A_RELEASE_KEYALIAS: ${{ secrets.P4A_RELEASE_KEYALIAS }}
+          P4A_RELEASE_KEYALIAS_PASSWD: ${{ secrets.P4A_RELEASE_KEYALIAS_PASSWD }}
+        run: buildozer android release
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: neon-hands-android-aab
+          path: bin/*.aab
+          if-no-files-found: error
+          retention-days: 14

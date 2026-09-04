@@ -1,0 +1,32 @@
+NEON HANDS 1.0.0 - FINAL SECURITY/QUALITY REPORT
+Date: 2026-09-03
+
+PASS  Python compileall: main.py, game_logic.py, integrity.py, tools, tests
+PASS  Unit tests: 5/5
+      - all 9 Rock/Paper/Scissors outcomes
+      - invalid move rejection
+      - valid asset manifest
+      - modified asset detection
+      - manifest path traversal rejection
+PASS  Custom security policy scan
+      - no runtime network/socket/subprocess/dynamic-code/pickle APIs
+      - no known secret/private-key patterns
+      - no signing-key file in repository
+      - empty Android permission list
+      - Android backup disabled
+      - API 36 / NDK 28c / AAB policy enforced
+      - SHA-256 runtime asset integrity verified
+PASS  Bandit 1.9.4: 0 high, 0 medium, 0 low findings
+PASS  pip-audit 2.10.1: no known vulnerabilities for requirements.txt
+PASS  Ruff 0.16.6: lint and formatting checks
+PASS  Desktop runtime smoke test: Kivy 2.3.1 reached the main event loop
+PASS  Play artwork: 512x512 RGBA icon under 1 MB; 1024x500 RGB feature graphic
+
+NOT RUN HERE
+- Android AAB compilation/signing (requires a Linux/WSL Android toolchain and the
+  owner's private upload key; the reproducible GitHub Actions workflow is ready).
+- MobSF binary analysis and Google Play pre-launch report (require the final signed
+  AAB). These are mandatory release gates in docs/PLAY_STORE_RELEASE.md.
+
+Security is a maintained process, not a permanent guarantee. Re-run every gate for
+each release and do not publish signing material or repository secrets.

@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "algorithm": "sha256",
+  "assets": {
+    "audio/battle_loop.wav": {
+      "sha256": "114f98e7cfb57bfedf5b37bec6d0fb63514c35fd6725a2cacb1348723d9f8113",
+      "size": 814196
+    },
+    "audio/defeat_sting.wav": {
+      "sha256": "8488b3c77d61ecf4daa7dadfee5356e980ad0d1a6c842cee136b0f70e31b4933",
+      "size": 101472
+    },
+    "audio/hand_whoosh.wav": {
+      "sha256": "df315d71c85fddf38059d222e1be256353a2b7222c92bee4cf622904668f96cb",
+      "size": 10628
+    },
+    "audio/reveal_swish.wav": {
+      "sha256": "e8560aa30f48b4853c5f02c5299104c87ff67a2cdd5dffb1335b97ef562646bb",
+      "size": 25622
+    },
+    "audio/soft_click.wav": {
+      "sha256": "1cfa85f8bfb0a7405ce821e7b7f545d713b83ea4a737c79f88d888b3442274a3",
+      "size": 4232
+    },
+    "audio/soft_loop.wav": {
+      "sha256": "1552f39fab3c593a893631b915c9fb72445f95fdf835c108831bea0b687d845a",
+      "size": 1058444
+    },
+    "audio/victory_fanfare.wav": {
+      "sha256": "12016a0a84594c836b23914f58d945519b1466f2d9cbe3f3541cbbd7cc3c3a6c",
+      "size": 132344
+    },
+    "computer-glove-3d-sheet-v2.png": {
+      "sha256": "089774c6d07d678d258bbf1343b0cc4723e344c98251ec8f9b435c984ea40e3b",
+      "size": 1104572
+    },
+    "player-glove-3d-sheet-v2.png": {
+      "sha256": "39626feb6b3bd09450a7bc6af3438e7082c6a29df0a3ac4329ddfa4cce0390b1",
+      "size": 1206117
+    }
+  }
+}

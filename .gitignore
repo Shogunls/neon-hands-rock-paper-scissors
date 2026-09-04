@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+
+# Local environments and editors
+.venv/
+.vscode/
+.idea/
+.kivy/
+
+# Android/build outputs
+.buildozer/
+bin/
+build/
+dist/
+*.apk
+*.aab
+
+# Signing material and local secrets — never commit these
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+.env
+.env.*
+signing.properties
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
