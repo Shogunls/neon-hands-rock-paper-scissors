@@ -15,7 +15,7 @@ The review follows the relevant [OWASP MASVS](https://mas.owasp.org/MASVS/) cate
 - Saved volume values are type-checked, required to be finite, and clamped to `0..1`.
 - Game moves are validated against a fixed allowlist and all nine outcomes are tested.
 - Runtime sprite and audio assets are checked for size and SHA-256 digest at startup; manifest path traversal is rejected.
-- Kivy is pinned. CI runs pip-audit, Bandit, Ruff, a custom AST/secret scan, and CodeQL.
+- Kivy is pinned. CI runs pip-audit, Bandit, Ruff, and a custom AST/secret scan. CodeQL activates when GitHub Code Scanning is available (public repositories or private repositories with GitHub Advanced Security).
 - GitHub Actions dependencies are pinned to commit hashes and monitored by Dependabot.
 - Keystores, certificates, environment secrets, APKs, and AABs are excluded from Git.
 - The Android build configuration is pinned to API 36, NDK 28c, ARM64/ARMv7, and AAB output.

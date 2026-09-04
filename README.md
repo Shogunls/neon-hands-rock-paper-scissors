@@ -48,7 +48,7 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\pip-audit.exe -r requirements.txt
 ```
 
-GitHub Actions runs unit tests, Ruff, Bandit, pip-audit, and CodeQL. Runtime sprite and audio files are checked against the SHA-256 values in `assets/manifest.json` before the game starts.
+GitHub Actions runs unit tests, Ruff, Bandit, pip-audit, and the project policy scanner. CodeQL activates automatically when GitHub Code Scanning is available (public repositories or private repositories with GitHub Advanced Security). Runtime sprite and audio files are checked against the SHA-256 values in `assets/manifest.json` before the game starts.
 
 ## Android App Bundle
 

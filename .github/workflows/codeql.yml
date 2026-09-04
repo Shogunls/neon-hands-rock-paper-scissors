@@ -16,6 +16,9 @@ permissions:
 
 jobs:
   analyze:
+    # GitHub Code Scanning is unavailable on ordinary private personal repos.
+    # This activates automatically after the repo becomes public or gains GHAS.
+    if: github.event.repository.visibility == 'public'
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
