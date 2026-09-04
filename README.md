@@ -24,8 +24,8 @@ Neon Hands turns the classic game into a polished mobile duel with expressive 3D
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/battle-arena.png" alt="Neon Hands battle arena" width="45%">
-  <img src="docs/screenshots/victory-screen.png" alt="Neon Hands victory screen" width="45%">
+  <img src="docs/screenshots/main-menu.png" alt="Neon Hands main menu" width="45%">
+  <img src="docs/screenshots/choice-screen.png" alt="Neon Hands move selection screen" width="45%">
 </p>
 
 ## Run on desktop

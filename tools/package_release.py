@@ -101,7 +101,7 @@ def main() -> None:
     for name in (".github", "store-assets", "tests", "tools"):
         copy_tree(name, github)
     copy_file("docs/SECURITY_AUDIT.md", github)
-    for screenshot in ("battle-arena.png", "victory-screen.png"):
+    for screenshot in ("main-menu.png", "choice-screen.png"):
         copy_file(f"docs/screenshots/{screenshot}", github)
     copy_runtime_assets(github, include_sources=True)
 
